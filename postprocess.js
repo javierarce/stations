@@ -25,6 +25,7 @@ const magic = (station) => {
 
   let date = `${yyyy}/${mm}/${dd}`
   let time = now.getHours()
+  let timestamp = json.updated_at
 
   return { timestamp, date, time, id, available,bases, bikes, free_bases, reservations, light }
 }
