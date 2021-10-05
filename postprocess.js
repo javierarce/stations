@@ -1,4 +1,4 @@
-import { readJSON, readCSV, writeCSV, writeJSON, removeFile } from 'https://deno.land/x/flat@0.0.11/mod.ts' 
+import { readJSON, readCSV, writeCSV } from 'https://deno.land/x/flat@0.0.11/mod.ts' 
 
 //const json = await readJSON('stations.json')
 
@@ -26,12 +26,11 @@ const magic = (station) => {
   let date = `${yyyy}/${mm}/${dd}`
   let time = now.getHours()
 
-  return { date, time, id, available,bases, bikes, free_bases, reservations, light }
+  return { timestamp, date, time, id, available,bases, bikes, free_bases, reservations, light }
 }
 
 Object.values(json.stations).forEach(async (station) => {
   let row = magic(station)
-  //console.log(data)
   data.push(row)
   await writeCSV('data.csv', data) 
 })
