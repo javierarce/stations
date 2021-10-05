@@ -14,7 +14,8 @@ const magic = (station) => {
   let bikes = station.dock_bikes
   let free_bases = station.free_bases
   let reservations = station.reservations_count
-  let now = new Date(json.updated_at)
+  let timestamp = json.updated_at
+  let now = new Date(timestamp)
 
   let day = now.getDate()
   let month = now.getMonth() + 1
@@ -23,11 +24,7 @@ const magic = (station) => {
   let mm = month < 10 ? `0${month}` : month
   let yyyy = now.getFullYear()
 
-  let date = `${yyyy}/${mm}/${dd}`
-  let time = now.getHours()
-  let timestamp = json.updated_at
-
-  return { timestamp, date, time, id, available,bases, bikes, free_bases, reservations, light }
+  return { timestamp, id, available,bases, bikes, free_bases, reservations, light }
 }
 
 Object.values(json.stations).forEach(async (station) => {
