@@ -1,10 +1,10 @@
 import { readJSON, readCSV, writeCSV } from 'https://deno.land/x/flat@0.0.11/mod.ts' 
 
-const json = await readJSON('stations.json')
+// const json = await readJSON('stations.json')
 
 let data = await readCSV('data.csv')
 const filename = Deno.args[0] 
-//const json = await readJSON(filename)
+const json = await readJSON(filename)
 
 const magic = (station) => {
   let id = station.id
@@ -33,3 +33,5 @@ Object.values(json.stations).forEach(async (station) => {
   await writeCSV('data.csv', data) 
 })
 
+//console.log("Wrote a post process file")
+//await removeFile('./btc-price.json') // equivalent to removeFile('btc-price.json')
